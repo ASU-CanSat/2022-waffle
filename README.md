@@ -1,6 +1,7 @@
 # Cansat-2022
 Software for CanSat Team 1052 W.A.F.F.L.E
 # TODO
+Complete Flight Software and update GCS software for 2022 Cansat requirements
 GCS xbee can just use AT mode since it only communicates with container, but container need to be in API mode
 - add support for more states in GCS
 
