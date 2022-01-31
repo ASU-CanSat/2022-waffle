@@ -1,4 +1,4 @@
-# Cansat-2021
+# Cansat-2022
 Software for CanSat Team 3226 P.O.P.T.A.R.T.S.
 # TODO
 GCS xbee can just use AT mode since it only communicates with container, but container need to be in API mode
