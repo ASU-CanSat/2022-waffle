@@ -1,5 +1,5 @@
 # Cansat-2022
-Software for CanSat Team 3226 P.O.P.T.A.R.T.S.
+Software for CanSat Team 1052 W.A.F.F.L.E
 # TODO
 GCS xbee can just use AT mode since it only communicates with container, but container need to be in API mode
 - add support for more states in GCS
@@ -55,6 +55,6 @@ $ python3 main.py -t
 $ deactivate
 ```
 ## License
-Copyright (c) 2021 CanSat Team 3226 P.O.P.T.A.R.T.S.
+Copyright (c) 2022 CanSat Team 1052 W.A.F.F.L.E
 
 Licensed under the [MIT license](LICENSE)
