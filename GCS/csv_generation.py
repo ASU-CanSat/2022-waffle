@@ -7,7 +7,7 @@ This file contains the CSV Generation file.
 import csv
 from csv import writer
 
-#create the 3 csv files required
+#create the 2 csv files required
 def build():
     #write to container csv file
     with open('reports/Flight_1052_C.csv', 'w', newline='') as file:
@@ -21,7 +21,7 @@ def build():
         file.close()
 
     #write to payload csv file
-    with open('reports/Flight_3226_SP1.csv', 'w', newline='') as file:
+    with open('reports/Flight_1052_TP.csv', 'w', newline='') as file:
         writerSP1 = csv.writer(file)
         #create the csv headers
         writerSP1.writerow(['TEAM_ID','MISSION_TIME','PACKET_COUNT','PACKET_TYPE',
@@ -31,15 +31,15 @@ def build():
 #to append data to the csv files
 def append_csv_file(line):
     data = line.split(",")
-    type = data[3] #to check if it came from container or which payload
+    type = data[3] #to check if it came from container or payload
     #appends data to the proper csv file
     if type == 'C':
         with open('reports/Flight_1052_C.csv', 'a', newline='') as file:
             writer_object = writer(file)
             writer_object.writerow(data)
             file.close()
-    if type == 'S1':
-        with open('reports/Flight_1052_SP.csv', 'a', newline='') as file:
+    if type == 'T':
+        with open('reports/Flight_1052_TP.csv', 'a', newline='') as file:
             writer_object = writer(file)
             writer_object.writerow(data)
             file.close()
