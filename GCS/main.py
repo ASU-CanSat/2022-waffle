@@ -26,7 +26,7 @@ from testing import local_test as test
 # GUI
 app = QApplication([])
 window = QWidget()
-window.setWindowTitle("Team 3226 P.O.P.T.A.R.T.S. Ground Station")
+window.setWindowTitle("Team 1052 W.A.F.F.L.E Ground Station")
 #window.resize(2000, 1100)
 window.resize(1600, 900)
 
@@ -77,7 +77,7 @@ def update():
 
 
 
-if path.exists("reports/Flight_3226_C.csv") == False:
+if path.exists("reports/Flight_1052_C.csv") == False:
     csv_generation.build()#to create the csv files
 
 timer = pg.QtCore.QTimer()
