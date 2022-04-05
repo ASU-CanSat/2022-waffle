@@ -29,12 +29,12 @@ mqttc.on_subscribe = on_subscribe
 # Uncomment to enable debug messages
 mqttc.on_log = on_log
 
-topic = 'teams/3226' # team number
+topic = 'teams/1052' # team number
 # Connect
-mqttc.username_pw_set("3226", "Kaukteti492%") # made up username and password
+mqttc.username_pw_set("1052", "Niyxsiku549") # made up username and password
 
 #mqttc.connect(url.hostname, url.port) # establish connection
 mqttc.connect("cansat.info",1883)
 
 def send_packet(message):
-    mqttc.publish("teams/3226", message)
+    mqttc.publish("teams/1052", message)
