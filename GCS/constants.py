@@ -1,5 +1,5 @@
 # constants #
-team_number = 3226
+team_number = 1052
 
 # flags #
 
