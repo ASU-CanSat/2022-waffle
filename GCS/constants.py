@@ -17,4 +17,3 @@ mqtt_flag = False
 
 # payload deployment
 sp1_deployed_flag = False
-sp2_deployed_flag = False

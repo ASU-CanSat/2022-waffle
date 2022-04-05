@@ -14,18 +14,19 @@ def build():
         writerC = csv.writer(file)
         #create the csv headers
         writerC.writerow(['TEAM_ID','MISSION_TIME','PACKET_COUNT','PACKET_TYPE','MODE',
-                        'SP1_RELEASED','SP2_RELEASED','ALTITUDE','TEMP',
+                        'TP_RELEASED','ALTITUDE','TEMP',
                         'VOLTAGE','GPS_TIME','GPS_LATITUDE','GPS_LONGITUDE',
-                        'GPS_ALTITUDE','GPS_SATS','SOFTWARE_STATE',
-                        'SP1_PACKET_COUNT','SP2_PACKET_COUNT','CMD_ECHO'])
+                        'GPS_ALTITUDE','GPS_SATS','SOFTWARE_STATE','CMD_ECHO'])
         file.close()
 
     #write to payload csv file
-    with open('reports/Flight_1052_TP.csv', 'w', newline='') as file:
-        writerSP1 = csv.writer(file)
+    with open('reports/Flight_1052_T.csv', 'w', newline='') as file:
+        writerTP = csv.writer(file)
         #create the csv headers
-        writerSP1.writerow(['TEAM_ID','MISSION_TIME','PACKET_COUNT','PACKET_TYPE',
-                            'SP_ALTITUDE','SP_TEMP','SP_ROTATION_RATE'])
+        writerTP.writerow(['TEAM_ID','MISSION_TIME','PACKET_COUNT','PACKET_TYPE',
+                            'TP_ALTITUDE','TP_TEMP','TP_VOLTAGE','GYRO_R','GYRO_P'
+                            'GYRO_Y','ACCEL_P','ACCEL_P','ACCEL_Y','MAG_R','MAG_P','MAG_Y', 
+                            'POINTING_ERROR','TP_SOFTWARE_STATE'])
         file.close()
 
 #to append data to the csv files
@@ -39,7 +40,7 @@ def append_csv_file(line):
             writer_object.writerow(data)
             file.close()
     if type == 'T':
-        with open('reports/Flight_1052_TP.csv', 'a', newline='') as file:
+        with open('reports/Flight_1052_T.csv', 'a', newline='') as file:
             writer_object = writer(file)
             writer_object.writerow(data)
             file.close()
