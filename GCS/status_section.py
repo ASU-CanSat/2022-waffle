@@ -17,11 +17,8 @@ simulationLabel.setStyleSheet("color: red")
 mqttTransmitLabel = QLabel("MQTT Transmission Status: False")
 mqttTransmitLabel.setStyleSheet("color: red")
 
-payload1Label = QLabel("Payload 1 Is NOT Deployed")
+payload1Label = QLabel("Tethered Payload Is NOT Deployed")
 payload1Label.setStyleSheet("color: red")
-
-payload2Label = QLabel("Payload 2 Is NOT Deployed")
-payload2Label.setStyleSheet("color: red")
 
 # returns a layout that can be included in application window
 def build():

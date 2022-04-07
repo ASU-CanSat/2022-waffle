@@ -28,7 +28,7 @@ app = QApplication([])
 window = QWidget()
 window.setWindowTitle("Team 1052 W.A.F.F.L.E Ground Station")
 #window.resize(2000, 1100)
-window.resize(1600, 900)
+window.resize(2950, 1200)
 
 
 # widgets
@@ -52,7 +52,7 @@ window.setLayout(layout)
 window.show()
 
 # initialize xbee
-xbee.initialize()
+#xbee.initialize()
 
 # update function
 def update():
@@ -66,8 +66,6 @@ def update():
     status_section.update() # this update function is for mission time
     if constants.sp1_deployed_flag:
         status_section.payload1Deployed()
-    if constants.sp2_deployed_flag:
-        status_section.payload2Deployed()
 
     # temporary spot but it probably makes sense here
     if(constants.sim_activate_flag and constants.sim_enable_flag):

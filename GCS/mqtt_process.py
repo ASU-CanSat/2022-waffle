@@ -4,24 +4,25 @@
 
 Implementation for processing data to MQTT broker for live-remote viewing of data
 """
-import mqtt.*
-MQTTClient client
+import paho.mqtt.client as mqtt
+client = mqtt.Client()
 def setup() :
-    client = new MQTTClient(this);
-    client.connect("mqtt://3226:Kaukteti492%@cansat.info");
+    client = mqtt.Client()
+    client.connect("mqtt://1052:Niyxsiku549@cansat.info");
 
 
-void draw()
+def draw():
+    pass
 
 def keyPressed():
-    client.publish("teams/3226", "world");
+    client.publish("teams/1052", "world");
 
 def clientConnected() :
-    println("client connected");
+    print("client connected");
 # client.subscribe("/hello");
 
-def messageReceived(String topic, byte[] payload) :
-    println("new message: " + topic + " - " + new String(payload));
+def messageReceived(topic, payload):
+    print("new message: " + topic + " - " + str(payload));
 
 def connectionLost() :
-    println("connection lost");
+    print("connection lost");

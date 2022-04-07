@@ -55,7 +55,7 @@ def get_nth_value(n):
 def transmit_packet():
     data = get_nth_value(transmit_packet.itr)
     if (data != err_out_of_bounds):
-        packet = "CMD,3226,SIMP," + str(data)
+        packet = "CMD,1052,SIMP," + str(data)
         print(packet)
         transmit_packet.itr += 1
         return packet

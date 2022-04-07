@@ -55,16 +55,6 @@ def transmission_toggle(args):
         else:
             print("CMD ERR: SP1X expected {ON,OFF} but found " + args[1])
             return False, ("CMD ERR: SP1X expected {ON,OFF} but found " + args[1])
-    else:
-        if args[1] == "ON":
-            constants.sp2x_flag = True
-            return True, ""
-        elif args[1] == "OFF":
-            constants.sp2x_flag = False
-            return True, ""
-        else:
-            print("CMD ERR: SP2X expected {ON,OFF} but found " + args[1])
-            return False, ("CMD ERR: SP2X expected {ON,OFF} but found " + args[1])
 
 def mqtt_toggle(args):
     if args[1] == "ON":

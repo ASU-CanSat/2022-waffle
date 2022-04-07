@@ -13,8 +13,6 @@ import status_section as status
 import packet_history
 
 
-
-
 device = XBeeDevice("/dev/ttyUSB0", 9600)
 
 # this address could change

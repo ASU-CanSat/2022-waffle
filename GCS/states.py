@@ -11,7 +11,7 @@ import commands
 
 
 #create payload states/statuses
-payload1Label = QLabel("Payload 1")
+payload1Label = QLabel("Payload")
 payload1Label.setStyleSheet("color: blue;"
                          "border-style: solid;"
                          "background-color: #87CEFA;"
@@ -23,24 +23,10 @@ pay1InvalidPackets = 0
 pay1ValidPacketLabel = QLabel("Valid Packets: " + str(pay1ValidPackets))#TODO how do we add packets?
 pay1InvalidPacketLabel = QLabel("Invalid Packets: " + str(pay1InvalidPackets))
 
+pay1PointingError = QLabel("Pointing Error: ")
 
-payload2Label = QLabel("Payload 2")
-payload2Label.setStyleSheet("color: blue;"
-                         "border-style: solid;"
-                         "background-color: #87CEFA;"
-                         "border-width: 2px;"
-                         "border-color: #1E90FF;"
-                         "border-radius: 3px")
-pay2ValidPackets = 0
-pay2InvalidPackets = 0
-pay2ValidPacketLabel = QLabel("Valid Packets: " + str(pay2ValidPackets))#TODO how do we add packets?
-pay2InvalidPacketLabel = QLabel("Invalid Packets: " + str(pay2InvalidPackets))
-
-payload1State = QLabel("Payload 1 State: Launchpad and\nNot Deployed")
+payload1State = QLabel("Tethered Payload State: Launchpad and\nNot Deployed")
 payload1State.setStyleSheet("color: red")
-
-payload2State = QLabel("Payload 2 State: Launchpad and\nNot Deployed")
-payload2State.setStyleSheet("color: red")
 
 #create container states/statuses
 containerLabel = QLabel("Container")
@@ -78,17 +64,8 @@ def buildPay1Layout():
     layout.addWidget(payload1Label)
     layout.addWidget(pay1ValidPacketLabel)
     layout.addWidget(pay1InvalidPacketLabel)
+    layout.addWidget(pay1PointingError)
     layout.addWidget(payload1State)
-    return layout
-
-def buildPay2Layout():
-    #adding all the widgets to the layout
-    layout = QVBoxLayout()
-    # payload 2
-    layout.addWidget(payload2Label)
-    layout.addWidget(pay2ValidPacketLabel)
-    layout.addWidget(pay2InvalidPacketLabel)
-    layout.addWidget(payload2State)
     return layout
 
 # return container info as layout
@@ -104,27 +81,23 @@ def buildContainerLayout():
     layout.addWidget(gpsSatsLabel)
     return layout
 
+#to update the pointing error of payload
+def updatePointingError(error):
+    pay1PointingError.setText("Pointing Error: " + str(error))
+
 #function to update first payload states
 def updatePayload1State(state):
     if(state == "R"):
-        payload1State.setText("Payload 1 State: Deployed and\nDescending")
+        payload1State.setText("Tethered Payload State: Deployed and\nDescending")
         payload1State.setStyleSheet("color: green")
-
-#function to update if second payload states
-def updatePayload2State(state):
-    if (state == "R"):
-        payload2State.setText("Payload 2 State: Deployed and\nDescending")
-        payload2State.setStyleSheet("color: green")
 
 #function to update container states
 def updateContainerState(state):
     if(state == "ASCENT"):
         containerState.setText("State: Ascending")
         containerState.setStyleSheet("color: green")
-        payload1State.setText("Payload 1 State: Ascending and\nNOT Deployed")
+        payload1State.setText("Tethered Payload State: Ascending and\nNOT Deployed")
         payload1State.setStyleSheet("color: orange")
-        payload2State.setText("Payload 2 State: Ascending and\nNOT Deployed")
-        payload2State.setStyleSheet("color: orange")
 
     elif(state == "DESCENT"):
         containerState.setText("State: Descending")
@@ -135,7 +108,7 @@ def updateContainerState(state):
 
 def update_packet_count(packetCount, sp1PacketCount, sp2PacketCount):
     # update variables
-    global pay1ValidPackets, pay2ValidPackets, conValidPackets
+    global pay1ValidPackets, conValidPackets
     if packetCount + sp1PacketCount + sp2PacketCount == -3:
         pay1ValidPackets += 1
     elif packetCount + sp1PacketCount + sp2PacketCount == -6:
@@ -147,7 +120,6 @@ def update_packet_count(packetCount, sp1PacketCount, sp2PacketCount):
 
     # update labels
     pay1ValidPacketLabel.setText("Valid Packets: " + str(pay1ValidPackets))
-    pay2ValidPacketLabel.setText("Valid Packets: " + str(pay2ValidPackets))
     conValidPacketLabel.setText("Valid Packets: " + str(conValidPackets))
 
 def update_gps(time, lat, lon, alt, sats):
@@ -169,7 +141,6 @@ def update_state(packet):
     if packet_args[3] == "C":
         # update states
         updatePayload1State(packet_args[5])
-        updatePayload2State(packet_args[6])
         updateContainerState(packet_args[15])
 
         # update gps information
@@ -177,7 +148,5 @@ def update_state(packet):
 
         # next, update packet counts regardless of type of packet
         update_packet_count(int(packet_args[2]), int(packet_args[16]), int(packet_args[17]))
-    elif packet_args[3] == "S1":
+    elif packet_args[3] == "T":
         update_packet_count(-1, -1, -1)
-    elif packet_args[3] == "S2":
-        update_packet_count(-2, -2, -2)

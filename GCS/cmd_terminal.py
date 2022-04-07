@@ -52,7 +52,7 @@ def build():
                 cmd_packet += "," + str(times[0]) + ":" + str(times[1]) + ":" + str(times[2])
             elif cmd_args[0] == "SIM": # TODO: maybe add another elif but for sim and release? so this is only sim and enable/activate/disable
                 valid_cmd_flag, error_msg = commands.sim_command(cmd_args)
-            elif cmd_args[0] == "CX" or cmd_args[0] == "SP1X" or cmd_args[0] == "SP2X":
+            elif cmd_args[0] == "CX" or cmd_args[0] == "SP1X":
                 valid_cmd_flag, error_msg = commands.transmission_toggle(cmd_args)
             elif cmd_args[0] == "MQTT":
                valid_cmd_flag, error_msg =  commands.mqtt_toggle(cmd_args)
